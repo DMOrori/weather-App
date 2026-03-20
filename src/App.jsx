@@ -4,7 +4,10 @@ import WeatherCard from "./components/WeatherCard";
 import HourlyList from "./components/HourlyList";
 import DailyForecast from "./components/DailyForecast";
 
-const API_KEY = import.meta.env.VITE_OPENWEATHER_KEY;
+const API_KEY =
+  import.meta.env.VITE_OPENWEATHER_KEY ||
+  import.meta.env.REACT_APP_OPENWEATHER_KEY ||
+  import.meta.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 
 export default function App() {
@@ -34,8 +37,10 @@ export default function App() {
         `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=1&appid=${API_KEY}`
       );
       const geo = await geoRes.json();
-      if (!geo || geo.length === 0) {
-        throw new Error("Location not found");
+      console.log("geoRes", geoRes.status, geoRes.statusText, "geo", geo);
+      if (!geoRes.ok) throw new Error(`Geo API error: ${geo?.message || geoRes.statusText}`);
+      if (!geo || !Array.isArray(geo) || geo.length === 0) {
+        throw new Error("Location not found; please try another place name");
       }
       const { lat, lon, name, country } = geo[0];
       setLocation({ name, country });
