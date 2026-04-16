@@ -106,7 +106,7 @@ html,
 }
 
 .search-input {
-  background: rgba(12, 18, 39, 0.85);
+  background: rgba(39, 58, 125, 0.85);
   border: 1px solid rgba(108, 145, 255, 0.35);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
   color: var(--neutral-0);
