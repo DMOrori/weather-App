@@ -147,7 +147,6 @@ html,
 }
 
 /* Left column contents */
-.left-column {}
 
 /* Weather card big */
 .weather-card {
@@ -273,7 +272,6 @@ html,
 }
 
 /* Right column - hourly pane */
-.right-column {}
 
 .hourly-pane {
   background: linear-gradient(180deg, rgba(12, 22, 45, 0.95), rgba(14, 27, 56, 0.95));
@@ -362,23 +360,45 @@ html,
 
 /* Responsive */
 @media (max-width: 880px) {
+  .app-shell {
+    padding: 24px 12px;
+  }
+
   .container {
     width: 100%;
     padding: 20px;
     border-radius: 16px;
   }
 
+  .header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .hero-title {
-    font-size: 26px;
+    font-size: 30px;
     margin: 10px 0 18px;
   }
 
+  .searchbar {
+    flex-wrap: wrap;
+    justify-content: stretch;
+  }
+
   .search-input {
-    width: 70%;
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 280px;
+  }
+
+  .search-btn {
+    width: 100%;
+    max-width: 240px;
   }
 
   .content-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .right-column {
@@ -389,15 +409,104 @@ html,
     order: 1;
   }
 
+  .weather-card {
+    min-height: 0;
+    width: 100%;
+  }
+
+  .card-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .temp-block {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .weather-illustration img {
+    width: 72px;
+    height: 72px;
+  }
+
   .temp-val {
     font-size: 56px;
   }
 
-  .weather-card {
-    min-height: 210px;
+  .stats-row {
+    width: 100%;
+  }
+
+  .stat {
+    flex: 1 1 130px;
+    min-width: 0;
+  }
+
+  .daily-row {
+    gap: 10px;
+    padding-bottom: 4px;
+  }
+
+  .daily-card {
+    min-width: 76px;
+    padding: 10px 8px;
   }
 
   .hourly-pane {
-    min-height: auto;
+    min-height: 0;
+  }
+
+  .hourly-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .day-select {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .hour-row {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .hour-time,
+  .hour-temp {
+    flex: 1 1 auto;
+    min-width: 70px;
+  }
+
+  .hour-icon {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .search-btn {
+    max-width: none;
+  }
+
+  .temp-val {
+    font-size: 48px;
+  }
+
+  .weather-illustration img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .stat {
+    min-width: 48%;
+  }
+
+  .daily-card {
+    min-width: 72px;
   }
 }
